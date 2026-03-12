@@ -24,6 +24,6 @@
 --   - Added column: participant_context_id
 --     (links the STS client to its owning participant context)
 
-ALTER TABLE edc_sts_client ADD COLUMN IF NOT EXISTS participant_context_id VARCHAR NOT NULL DEFAULT '';
+ALTER TABLE edc_sts_client ADD COLUMN IF NOT EXISTS participant_context_id VARCHAR;
 ALTER TABLE edc_sts_client DROP COLUMN IF EXISTS private_key_alias;
 ALTER TABLE edc_sts_client DROP COLUMN IF EXISTS public_key_reference;

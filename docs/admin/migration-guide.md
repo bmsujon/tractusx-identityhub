@@ -109,9 +109,9 @@ The `edc_lease` table used by `edc_credential_offers` and `edc_holder_credential
 
 ```sql
 -- Drop foreign key references
-ALTER TABLE edc_credential_offers DROP CONSTRAINT IF EXISTS edc_credential_offers_lease_id_fkey;
+ALTER TABLE edc_credential_offers DROP CONSTRAINT IF EXISTS credreq_lease_lease_id_fk;
 ALTER TABLE edc_credential_offers DROP COLUMN IF EXISTS lease_id;
-ALTER TABLE edc_holder_credentialrequest DROP CONSTRAINT IF EXISTS edc_holder_credentialrequest_lease_id_fkey;
+ALTER TABLE edc_holder_credentialrequest DROP CONSTRAINT IF EXISTS credreq_lease_lease_id_fk;
 ALTER TABLE edc_holder_credentialrequest DROP COLUMN IF EXISTS lease_id;
 
 -- Replace edc_lease with new schema
@@ -134,7 +134,7 @@ The same redesign applies to the `edc_lease` table used by `edc_issuance_process
 
 ```sql
 -- Drop foreign key reference
-ALTER TABLE edc_issuance_process DROP CONSTRAINT IF EXISTS edc_issuance_process_lease_id_fkey;
+ALTER TABLE edc_issuance_process DROP CONSTRAINT IF EXISTS issuance_process_lease_lease_id_fk;
 ALTER TABLE edc_issuance_process DROP COLUMN IF EXISTS lease_id;
 
 -- Replace edc_lease with new schema
@@ -182,14 +182,14 @@ All 5 tests should pass and shadow JARs should be produced in `runtimes/*/build/
 > 2. Set during installation.
 > 
 > ```bash
-helm install tractusx-identityhub -n tractusx-dev tractusx/tractusx-identityhub \
->   --set postgresql.image.repository=bitnamilegacy/postgresql
+> helm install tractusx-identityhub -n tractusx-dev tractusx/tractusx-identityhub \
+>   --set postgresql.image.repository=bitnamilegacy/postgresql \
 >   --set postgresql.image.tag=15.4.0-debian-11-r45
 > ```
 > 
 > Notes:
 > 
-- Deploying an older version of the software may have used an older postgresql version.
+> - Deploying an older version of the software may have used an older postgresql version.
 > - The community is working out on how to resolve the issue.
 
 # NOTICE
